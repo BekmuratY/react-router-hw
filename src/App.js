@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Обратите внимание на использование Routes здесь
+import ProductList from './components/ProductList';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/">Главная</Link></li>
+            <li><Link to="/about">О нас</Link></li>
+            <li><Link to="/contact">Контакты</Link></li>
+          </ul>
+        </nav>
+
+        <Routes> {/* Оберните маршруты в компонент Routes */}
+          <Route path="/" element={<ProductList />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Routes> {/* Обратите внимание на использование Routes здесь */}
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
